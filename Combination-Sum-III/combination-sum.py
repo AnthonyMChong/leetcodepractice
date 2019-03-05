@@ -19,27 +19,31 @@ def twoSum (n , start): #test function where the sum  n consists of start and an
     else :
         return n - start
 
-def twoSumRec (k , n , start = 0): #test function where the sum  n consists of start and another int that is larger
-    print "running twoSumRec with:" , k , "  ", n
-    retList = []
+def twoSumRec (k , n , start = 0 , kfirst = 3 ): #test function where the sum  n consists of start and another int that is larger
+    biglist = []
     if (start > n or k < 1):
         return None
     if (k == 1):
         return n    # when we only have 1 space it is equal to the number
-    else :  ## we need to recurse some more 
-        retList.append(start)
-        #for 
-        recReturn = twoSumRec(k -1 , n - start , start+1)
-        if recReturn is not None:
-            print start , " " , recReturn
-            if isinstance(recReturn, list ):#format correctly if list
-                for recReturnEl in recReturn:
-                    retList.append(recReturnEl)
-            else:   #if it is just an int
-                retList.append(recReturn)
-        else:
-            return None
-    return retList
+    else :  ## we need to recurse some more
+        for nstart in range (start , n):
+            retList = []
+            retList.append(nstart)
+            recReturn = twoSumRec(k -1 , n - nstart , nstart+1)
+            if recReturn is not None and recReturn is not []:
+                if isinstance(recReturn, list ):#format correctly if list
+                    for recReturnEl in recReturn[:]:
+                        retList.append(recReturnEl)
+                else:   #if it is just an int
+                    retList.append(recReturn)
+                if len(retList) == kfirst:
+                    print retList
+                    biglist.append(retList)
+                else: 
+                    return retList[:]
+            
+    print "bigList: ", biglist
+    return biglist
 
 def twoSumRecHelper (k , n ):
     retList = []
