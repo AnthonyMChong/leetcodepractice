@@ -6,3 +6,4 @@ print "\n checking the tree: "
 print testtree.head.value
 print testtree.head.leftnode.value
 print testtree.head.rightnode.value
+print testtree.getList()

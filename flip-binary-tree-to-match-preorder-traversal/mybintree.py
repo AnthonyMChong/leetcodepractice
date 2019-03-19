@@ -9,6 +9,7 @@ class node:
 
 class binTree(object): # returns head of the binary tree we are creating
     head = None
+    listofTree = []
     def __init__( self, nodelist ):
         if isinstance(nodelist, int):
             self.head = node(nodelist)
@@ -24,4 +25,17 @@ class binTree(object): # returns head of the binary tree we are creating
         
         print nodelist
         return node( nodelist[len(nodelist)/2] )
-        
+    def getList (self):
+        self.listofTree = []
+        self.orderPrint()
+        return self.listofTree[:]
+
+    def orderPrint(self , node = None):
+        if node is None:
+            node = self.head
+        if node.leftnode is not None:
+            self.orderPrint( node.leftnode )
+        self.listofTree.append(node.value)
+        # print node.value
+        if node.rightnode is not None:
+            self.orderPrint( node.rightnode )
