@@ -20,11 +20,17 @@ class binTree(object): # returns head of the binary tree we are creating
         self.head.rightnode = self.recinsert( nodelist[(len(nodelist)/2)+1:] )
         return
         #for nodeEl in nodelist:
+
     def recinsert ( self , nodelist):
-        # if len(node)
-        
+        currentNode = node( nodelist[len(nodelist)/2] )
+        if len(nodelist) > 1:
+            currentNode.leftnode = self.recinsert( nodelist[0:(len(nodelist)/2)] )
+        if len(nodelist) > 2:
+            currentNode.rightnode = self.recinsert( nodelist[(len(nodelist)/2)+1:] )
         print nodelist
-        return node( nodelist[len(nodelist)/2] )
+        return currentNode
+
+
     def getList (self):
         self.listofTree = []
         self.orderPrint()
