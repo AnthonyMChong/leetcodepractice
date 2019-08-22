@@ -1,0 +1,5 @@
+Cracking the coding interview Question from hashtables
+
+determine if a string is unique. 
+
+after, how would we do this if we have very limited memory?
